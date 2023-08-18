@@ -9,56 +9,63 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
         }
 
-        /* Encabezado */
-        header {
-            background-color: #333;
-            color: white;
-            padding: 1rem;
-            text-align: center;
+        /* Cambio de color al hacer clic */
+        .color-change {
+            cursor: pointer;
+            transition: color 0.3s ease-in-out; /* Transición suave de color */
         }
 
-        /* Navegación */
-        nav ul {
-            list-style: none;
-            padding: 0;
+        /* Desactivar la selección de texto */
+        .no-select {
+            user-select: none;
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
         }
 
-        nav ul li {
-            display: inline;
-            margin-right: 1rem;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: white;
-        }
-
-        /* Secciones */
-        section {
-            margin: 2rem;
-        }
-
-        /* Pie de página */
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 1rem;
+        /* Bordes redondeados */
+        h1:hover, section {
+            border-radius: 10px;
+            border: 2px solid #333;
+            padding: 10px;
         }
     </style>
+    <script>
+        // Cambiar el color del texto al hacer clic
+        function changeColor(element) {
+            var randomColor = 'rgb(' +
+                Math.floor(Math.random() * 256) + ',' +
+                Math.floor(Math.random() * 256) + ',' +
+                Math.floor(Math.random() * 256) + ')';
+            
+            element.style.color = randomColor;
+        }
+
+        // Prevenir acceso a las herramientas de desarrollador (F12)
+        document.addEventListener("keydown", function(e) {
+            if (e.key === "F12") {
+                e.preventDefault();
+            }
+        });
+    </script>
     <title>Ejemplo HTML y CSS</title>
 </head>
 <body>
     <header>
-        <h1>Mi Página Web</h1>
+        <p class="color-change no-select" onclick="changeColor(this)"><h1>Mi Página Web</h1></p>
         <nav>
             <ul>
                 <li><a href="#inicio">Inicio</a></li>
                 <li><a href="#acerca">Acerca de</a></li>
                 <li><a href="#servicios">Servicios</a></li>
-                <li><a href="contacto">Contacto</a></li>
+                <li><a href="#contacto">Contacto</a></li>
             </ul>
         </nav>
     </header>
@@ -75,13 +82,12 @@
             <h2>Nuestros Servicios</h2>
             <ul>
                 <li>Diseño web</li>
-                <li>Desarrollo de aplicaciones</li>
-                <li>Optimización SEO</li>
+                <li>Toma de Fotos</li>
             </ul>
         </section>
         <section id="contacto">
             <h2>Contacto</h2>
-            <p>Ponte en contacto con nosotros en info@example.com.</p>
+            <p>Ponte en contacto conmigo caucalygamer@gmail.com.</p>
         </section>
     </main>
     <footer>
